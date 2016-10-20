@@ -12,6 +12,10 @@ class Node:
 		# Access a node with [] notation and you will access its children
 		return self.children[key]
 
+	def __setitem__(self, key, value):
+		# Access a node with [] notation and you will access its children
+		self.children[key] = value
+
 def create_graph(size):
 	nodelist = []
 	for i in range(size):
