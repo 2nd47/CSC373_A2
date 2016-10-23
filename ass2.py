@@ -1,3 +1,4 @@
+from copy import copy, deepcopy
 import math
 import sys
 from random import random
@@ -76,6 +77,29 @@ def create_graph(size, edgeFunc, posFunc):
 					nodelist[j][i] = edgelen
 	print(nodelist)
 	pdb.set_trace()
+
+def boruvkaStep(graph):
+	'''returns the boruvka step on a given graph
+	'''
+	newGraph = deepcopy(graph)
+	return newGraph
+
+def createMST(graph):
+	'''given some graph as a list of Node objects, provide the MST
+	Uses the expected linear time MST algorithm (Karger-Klein-Tarjan)
+	'''
+	'''
+	From Wikipedia:
+	Input: A graph G with no isolated vertices
+		If G is empty return an empty forest
+		Create a contracted graph G` by running two successive Borůvka steps on G
+		Create a subgraph H by selecting each edge in G` with probability 1/2. Recursively apply the algorithm to H to get its minimum spanning forest F.
+		Remove all F-heavy edges from G` (where F is the forest from step 3) using a linear time minimum spanning tree verification algorithm.
+		Recursively apply the algorithm to G` to get its minimum spanning forest.
+	Output: The minimum spanning forest of G` and the contracted edges from the Borůvka steps
+	'''
+	newGraph = deepcopy(graph)
+	return newGraph
 
 if __name__ == '__main__':
 	# size can be between 30 - 50k
