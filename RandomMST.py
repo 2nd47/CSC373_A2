@@ -1,4 +1,3 @@
-from ass2 import create_graph
 from random import random
 import sys
 import heapq
