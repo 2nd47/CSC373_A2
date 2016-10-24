@@ -1,21 +1,39 @@
 from ass2 import create_graph
 from random import random
+import math
 import sys
 import heapq
 import time
 
+def dist(pos1, pos2):
+	'''return the distance between two points which are represented as
+	a two-element, one-dimensional array
+	'''
+	return math.sqrt(
+		(pos1[0] - pos2[0])**2 +
+		(pos1[1] - pos2[1])**2
+	)
+
+def randomWithinCircle():
+	''' Create a random position within the unit circle
+	'''
+	# create a random point along the circumfrence of the circle
+	z = 2*math.pi*random()
+	return (math.cos(z), math.sin(z))
+
 class Vertex:
-	def __init__(self, idx, adj=None):
+	def __init__(self, idx, posFunc, adj=None):
 		# adj is a [list of (vertex, weight) pairs]
 		self.adj = adj
-		self.cost = 1
+		self.cost = 2
 		self.prev = None
 		self.idx = idx
+		self.pos = posFunc()
 
 	def __cmp__(self, other):
 		return cmp(self.cost, other.cost)
 
-def randomMST(size):
+def circleMST(size):
 	# initial node 0
 	v = set()
 	minV = None
@@ -24,7 +42,7 @@ def randomMST(size):
 	global t00
 	t00 = time.time()
 	for i in range(size):
-		newVertex = Vertex(i)
+		newVertex = Vertex(i, randomWithinCircle)
 		# initialize cost of some vertex to 0
 		if i == 0:
 			newVertex.cost = 0
@@ -46,11 +64,11 @@ def randomMST(size):
 		global t31
 		t31 = time.time()
 		ans += cur.cost
-		minV = Vertex(-1)
+		minV = Vertex(-1, randomWithinCircle)
 		global t40
 		t40 = time.time()
 		for j in v:
-			newEdge = random()
+			newEdge = dist(j.pos, cur.pos)
 			if j.cost > newEdge:
 				j.cost = newEdge
 				j.prev = cur.idx
@@ -69,7 +87,7 @@ if __name__ == '__main__':
 		print('Please input a size argument!')
 		exit()
 	t0 = time.time()
-	print(randomMST(int(sys.argv[1])))
+	print(circleMST(int(sys.argv[1])))
 	t1 = time.time()
 	print('total time to execute: ' + str(t1 - t0))
 	print('time to create vertices: ' + str(t01 - t00))
