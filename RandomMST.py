@@ -2,6 +2,11 @@ from ass2 import create_graph
 from random import random
 import sys
 
+def randomMST(G):
+
+    return MST
+
+
 if __name__ == '__main__':
 	# size can be between 30 - 50k
 	if len(sys.argv) < 2:
