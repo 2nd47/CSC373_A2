@@ -79,15 +79,24 @@ def create_graph(size, edgeFunc, posFunc):
 	pdb.set_trace()
 
 def boruvkaStep(graph):
-	'''returns the boruvka step on a given graph
 	'''
-	newGraph = deepcopy(graph)
+	From Wikipedia:
+	Input: A graph G with no isolated vertices
+		1 For each vertex v, select the lightest edge incident on v
+		2 Create a contracted graph G' by replacing each component of G connected by the edges selected in step 1 with a single vertex
+		3 Remove all isolated vertices, self-loops, and non-minimal repetitive edges from G'
+ 	Output: The edges selected in step 1 and the contracted graph G'
+ 	'''
+	newGraph = [[] for i in len(graph)]
+	supernodes = []
+	for i in graph:
+		for j in range(len(i.children)):
+			if i <= j and i != j:
+				
+
 	return newGraph
 
 def createMST(graph):
-	'''given some graph as a list of Node objects, provide the MST
-	Uses the expected linear time MST algorithm (Karger-Klein-Tarjan)
-	'''
 	'''
 	From Wikipedia:
 	Input: A graph G with no isolated vertices
@@ -98,8 +107,8 @@ def createMST(graph):
 		Recursively apply the algorithm to G` to get its minimum spanning forest.
 	Output: The minimum spanning forest of G` and the contracted edges from the Borůvka steps
 	'''
-	newGraph = deepcopy(graph)
-	return newGraph
+
+	return
 
 if __name__ == '__main__':
 	# size can be between 30 - 50k
