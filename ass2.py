@@ -2,6 +2,7 @@ import math
 import sys
 from random import random
 import pdb
+import time
 
 class Node:
 	def __init__(self, size, pos=(0,0)):
@@ -28,12 +29,22 @@ class Node:
 		return self.__str__()
 
 class Edge:
-	def __init__(v1, v2, weight):	
+	def __init__(v1, v2, weight):
 		self.vertices = (v1, v2)
 		self.weight = weight
 
 	def hasVertice(vertice):
 		return vertice in self.vertices
+
+	def __getitem__(self, key):
+		'''# access a node with [] notation and you will access its vertices
+		'''
+		return self.vertices[key]
+
+	def __setitem__(self, key, value):
+		'''access a node with [] notation and you will access its vertices
+		'''
+		self.vertices[key] = value
 
 	def __cmp__(self, other):
          return cmp(self.weight, other.weight)
@@ -88,10 +99,50 @@ def create_graph(size, edgeFunc, posFunc):
 	print(nodelist)
 	pdb.set_trace()
 
+def mstByMatrix(size):
+	'''get the mst of a complete size-sized graph with random edges of weight
+	uniformly distributed between [0...1)
+	'''
+	def inGraph(graph, edge):
+		'''check if a vertex is in the graph
+		'''
+		pass
+
+	t0 = time.time()
+	nodes = [[None for j in range(i, size)] for i in range(size)]
+	edges = []
+	ans = 0
+
+	for i in range(size):
+		for j in range(i, size):
+			if not nodes[i][j-i]:
+				if i == j:
+					nodes[i][j-i] = 0
+				else:
+					nodes[i][j-i] = random()
+		# looped over all j
+	# looped over all i
+
+	t1 = time.time()
+	print(str(t1-t0))
+	# fully connected graph created, iterate over to create mst
+
+	nodeMap = [False for i in range(size)]
+	nodeMap[0] = True
+
+	nextVert = 0
+
+	# add the remaining vertices
+	while nextVert > -1:
+		break
+
+	return ans
+
 if __name__ == '__main__':
 	# size can be between 30 - 50k
 	if len(sys.argv) < 2:
 		print('Please input a size argument!')
 		exit()
-	create_graph(int(sys.argv[1]), random, None)
+	print(mstByMatrix(int(sys.argv[1])))
+	#create_graph(int(sys.argv[1]), random, None)
 	#create_graph(int(sys.argv[1]), None, randomWithinCircle)
