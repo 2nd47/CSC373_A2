@@ -1,7 +1,6 @@
 from random import random
 import sys
 import heapq
-import time
 
 class Edge:
 	def __init__(self, v1, v2, weight):
