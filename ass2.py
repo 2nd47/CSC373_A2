@@ -27,6 +27,17 @@ class Node:
 	def __repr__(self):
 		return self.__str__()
 
+class Edge:
+	def __init__(v1, v2, weight):	
+		self.vertices = (v1, v2)
+		self.weight = weight
+
+	def hasVertice(vertice):
+		return vertice in self.vertices
+
+	def __cmp__(self, other):
+         return cmp(self.weight, other.weight)
+
 '''
 REMINDER : THESE FILES MUST BE SPLIT UP BEFORE SUBMISSION
 '''
