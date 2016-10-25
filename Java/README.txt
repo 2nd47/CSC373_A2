@@ -106,4 +106,27 @@ Table of V:
    V=25  |          4.9596 |         4.3374 |         5.8197 |           0.0724
   V=1000 |         34.4248 |        33.8470 |        35.3149 |           0.1037
   V=20000|        153.2719 |       152.8553 |       154.0963 |           3.6205
-  V=50000|        242.1439 |       241.4320 |       242.9703 |          23.5194 
+  V=50000|        242.1439 |       241.4320 |       242.9703 |          23.5194
+
+Given this data, we can conclude the following:
+  - This algorithm's runtime increases similarly to RandomMST.
+  - The runtime is faster than RandomMST because we do not have to determine
+    edge weights ~|V|^2 times but only ~|V| times in our program. This is
+    because in RandomMST each vertex establishes a new weight to each other
+    vertex not yet in the graph (proportional to |V|^2). However, CircleMST
+    establishes edge weights once by determining the position of the vertex and
+    calculating edge weights as the distance between two vertex positions.
+    See source code for random.nextFloat() calls for more information.
+  - We can see that the mean MST weight seems to not converge. This is because
+    we represent a vertex's point in the circle as a pair of floats. However,
+    in a circle the number of points within the circle is determined and bound
+    by the smallest distance possible between two points. In reality, this
+    distance is infinitely small and there are infinitely many points in the
+    circle. In the case of using float pairs, that distance is finitely small
+    and is the 'machine epsilon', which is the upper bound on relative error
+    bound by floating point arithmetic. If the difference between two values is
+    the machine epsilon or smaller, the value is represented by the same
+    floating-point value. Then, we have a limit on the number of points in our
+    graph. However, this number is incredibly large and will only converge at
+    extremely large values of V because of this property of
+    floating-point arithmetic.
