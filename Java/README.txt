@@ -1,8 +1,19 @@
 CSC373 Assignment 2
+By :
+  Daniil Kouznetsov
+  Qingwei Li
+  Julianna Paprakis
 
 RandomMST:
 RandomMST calculates the MST for some given graph G with vertices V as such:
- - From 0 to V-1, create a new vertex stored 
+   - Iterate from 0 to V-1:
+      - Create a new vertex with some identifying index and a cost
+      - Default cost to 1.1 (cost can at most be 1)
+      - For the first vertex, set its cost to 0 and use it as the origin for the
+        MST algorithm
+   - Iterate over all vertices:
+      - Remove the origin from the list of vertices
+      - 
 
 ------------OUTPUT TABLE-------------
 -------------------------------------
