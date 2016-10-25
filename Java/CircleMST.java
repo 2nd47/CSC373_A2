@@ -1,6 +1,12 @@
 import java.util.HashSet;
 
-public class RandomMST {
+public class CircleMST {
+
+    public static double dist(double[] pos1, double[] pos2) {
+        return Math.sqrt(
+                Math.pow((pos1[0] - pos2[0]), 2.0d) +
+                Math.pow((pos1[1] - pos2[1]), 2.0d));
+    }
 
     public static void main(String[] args) {
         int size = Integer.parseInt(args[0]);
@@ -11,7 +17,7 @@ public class RandomMST {
         double ans = 0;
 
         for (int i = 0; i < size; i++) {
-            GraphVertex newVertex = new GraphVertex(i);
+            GraphVertex newVertex = new GraphVertex(i, true);
             if (i == 0) {
                 newVertex.cost = 0;
                 minV = newVertex;
@@ -28,6 +34,7 @@ public class RandomMST {
 
             double newEdge;
             for (GraphVertex j : V) {
+                // New edge dist is euclidean distance between the two vertices
                 newEdge = Math.random();
                 if (j.cost > newEdge) {
                     j.cost = newEdge;
