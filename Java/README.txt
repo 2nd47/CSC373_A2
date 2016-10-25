@@ -24,26 +24,26 @@ Prim's algorithm and does it in this way:
         - Keep track of the minimum cost vertex in V so we can pick the next origin:
           if the cost of the j is less than the current minimum cost vertex, j
           is the new minimum cost vertex.
-    - Return total cost 
+    - Return total cost
 The main quirk of this algorithm is that the graph is generated on-the-fly
 since edge weights are not retrieved from anywhere but, rather, are generated
 as we move from vertex to vertex. This is correct as long as we create and check
 one edge to and from every other edge in this complete graph. The asymptotic
-runtime is identical to Prim's Algorithm. The first for loop to set each V takes |V| time. 
-While we are calculating the edges and cost of the MST, we attempt to speed this up by only 
+runtime is identical to Prim's Algorithm. The first for loop to set each V takes |V| time.
+While we are calculating the edges and cost of the MST, we attempt to speed this up by only
 looping through each vertex currenly not in the MST.
 
-This takes about |V| + |V|-1 + ... + 1 + 0 = |V|(|V|+1)/2 time, which still simplifies 
+This takes about |V| + |V|-1 + ... + 1 + 0 = |V|(|V|+1)/2 time, which still simplifies
 to |V|^2 time. As such, our runtime is O(|V|^2).
 
 ------------OUTPUT TABLE-------------
 -------------------------------------
-- Input 10^i | MST weight | Runtime -
+- Input 10^i | MST weight | Runtime (seconds) -
 -------------------------------------
-         i=1 |            |
-         i=2 |            |
-         i=3 |            |
-         i=4 |            |
+         i=1 | 1.1806798  | 0.1038634767770690918
+         i=2 | 1.3039436  | 0.1246650218963623
+         i=3 | 1.1848867  | 0.12497687339782715
+         i=4 | 1.1954565  | 1.3109245300292969
 
 Table of V:
 -----------OUTPUT TABLE-------------
@@ -61,7 +61,7 @@ CircleMST is programmed the same as RandomMST. The only real difference
  between the two programs is that CircleMST represents vertices in an array of
 four floats, instead of two, where those two new elements represent the x,y
 coordinates of each vertex. The edges for each vertex are calculated by finding
-the Euclidian Distance between the 2 vertex points, instead of being calculated 
+the Euclidian Distance between the 2 vertex points, instead of being calculated
 randomly. In turn, CircleMST takes less time to run than
 RandomMST. One reason for this would be that the amount of calls to
 Math.random() is much smaller since we only need one call for each vertex
