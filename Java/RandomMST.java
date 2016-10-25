@@ -1,8 +1,10 @@
 import java.util.HashSet;
+import java.util.Random;
 
 public class RandomMST {
 
     public static void main(String[] args) {
+        Random random = new Random();
         int size = Integer.parseInt(args[0]);
 
         HashSet<float[]> V = new HashSet<>();
@@ -28,7 +30,7 @@ public class RandomMST {
 
             float newEdge;
             for (float[] j : V) {
-                newEdge = (float)Math.random();
+                newEdge = random.nextFloat();
                 if (j[1] > newEdge) {
                     j[1] = newEdge;
                 }

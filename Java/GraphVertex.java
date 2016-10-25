@@ -16,6 +16,6 @@ public class GraphVertex {
 
         private double[] randomWithinCircle() {
             double z = 2 * Math.PI * Math.random();
-            return new double[] {Math.cos((int) z), Math.sin((int) z)};
+            return new double[] {Math.cos(z), Math.sin(z)};
         }
 }
