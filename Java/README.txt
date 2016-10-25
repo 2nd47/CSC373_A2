@@ -6,7 +6,15 @@ By :
 
 RandomMST:
 RandomMST calculates the MST for some graph with a given size of vertices V using
-Prim's algorithm and does it in this way:
+a version of Prim's algorithm. We chose Prim's algorithm for both graphs because both are
+complete graphs, which means that they have |V|^2 edges. Prim's algorithm runs in V^2 time,
+while Kruskal's takes |E| log |V| time, which is equivalent to |V|^2 log |V| in this case, thus
+will take longer than Prim's. 
+
+We chose to store our graph data in simple data structures, and not classes in an attempt to
+optimize space and runtime, at the expense of readability.
+
+Our version of Prim's works in this way:
    - Iterate from 0 to V-1:
       - Create a new vertex with some identifying index and a cost
       - Default cost to 1.1 (cost can at most be 1)
@@ -46,14 +54,16 @@ to |V|^2 time. As such, our runtime is O(|V|^2).
          i=4 | 1.1954565  | 1.3109245300292969
 
 Table of V:
------------OUTPUT TABLE-------------
-------------------------------------
-- Input | Mean MST Weight (n=1000) -
-------------------------------------
-    V=2 |
-   V=10 |
-   V=25 |
-  V=100 |
+-----------OUTPUT TABLE (times run=15) ----------------------------------------
+-------------------------------------------------------------------------------
+- Input  | Mean MST Weight | Min MST Weight | Max MST Weight | Average Runtime - 
+-------------------------------------------------------------------------------
+    V=2  |          0.4459 |         0.1107 |         0.8772 |           0.0736
+   V=10  |          1.0451 |         0.5162 |         1.5546 |           0.0693
+   V=25  |          1.2368 |         0.8582 |         1.6812 |           0.0748
+  V=1000 |          1.2208 |         1.1377 |         1.3061 |           0.0906
+  V=20000|          1.1987 |         1.1784 |         1.2112 |           4.9578
+  V=50000|          1.2003 |         1.1912 |         1.2127 |          31.2575
 
 
 CircleMST:
