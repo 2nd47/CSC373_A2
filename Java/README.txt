@@ -31,7 +31,7 @@ as we move from vertex to vertex. This is correct as long as we create and check
 one edge to and from every other edge in this complete graph. The asymptotic
 runtime is identical to Prim's Algorithm. The first for loop to set each V takes |V| time.
 While we are calculating the edges and cost of the MST, we attempt to speed this up by only
-looping through each vertex currenly not in the MST.
+looping through each vertex currently not in the MST.
 
 This takes about |V| + |V|-1 + ... + 1 + 0 = |V|(|V|+1)/2 time, which still simplifies
 to |V|^2 time. As such, our runtime is O(|V|^2).
@@ -55,6 +55,12 @@ Table of V:
    V=25 |
   V=100 |
 
+Given this data, we can conclude the following:
+  - The program finds an MST as a higher-degree polynomial function of V as the
+    time to compute increases at a much greater rate as V is increased.
+    Specifically from V=20,000 to V=50,000, the runtime increases by a much
+    greater factor than 2.5.
+  - Given a sufficient number of vertices, the MST converges to total cost ~1.2
 
 CircleMST:
 CircleMST is programmed the same as RandomMST. The only real difference
@@ -89,3 +95,6 @@ Table of V:
    V=10 |
    V=25 |
   V=100 |
+
+Given this data, we can conclude the following:
+  -
