@@ -92,4 +92,3 @@ ENV/
 
 # ignored compiled java classes
 .Java/*.class
-*.txt
