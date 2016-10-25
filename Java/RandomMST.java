@@ -5,34 +5,34 @@ class RandomMST {
     public static void main(String[] args) {
         int size = Integer.parseInt(args[0]);
 
-        HashSet<GraphVertex> V = new HashSet<>();
+        HashSet<float[]> V = new HashSet<>();
 
-        GraphVertex minV = null;
-        double ans = 0;
+        float[] minV = null;
+        float ans = 0;
 
         for (int i = 0; i < size; i++) {
-            GraphVertex newVertex = new GraphVertex(i);
+            float[] newVertex = new float[]{(float)i, 1.1f};
             if (i == 0) {
-                newVertex.cost = 0;
+                newVertex[1] = 0;
                 minV = newVertex;
             }
             V.add(newVertex);
         }
 
-        GraphVertex curr;
+        float[] curr;
         while (V.size() > 0) {
             curr = minV;
             V.remove(curr);
-            ans += curr.cost;
-            minV = new GraphVertex(-1);
+            ans += curr[1];
+            minV = new float[]{-1.1f, 1.1f};
 
-            double newEdge;
-            for (GraphVertex j : V) {
-                newEdge = Math.random();
-                if (j.cost > newEdge) {
-                    j.cost = newEdge;
+            float newEdge;
+            for (float[] j : V) {
+                newEdge = (float)Math.random();
+                if (j[1] > newEdge) {
+                    j[1] = newEdge;
                 }
-                if (j.cost < minV.cost) {
+                if (j[1] < minV[1]) {
                     minV = j;
                 }
             }
