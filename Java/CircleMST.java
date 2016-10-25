@@ -21,8 +21,13 @@ public class CircleMST {
         for (int i = 0; i < size; i++) {
             //newVertexZ is generating a random angle inside the circle
             float newVertexZ = 2 * (float)Math.PI * random.nextFloat();
+            float shrinkFactor = random.nextFloat();
             //newVertex array structured as: {index, cost, position1, position2}
-            float[] newVertex = new float[]{(float)i, 2.1f, (float)Math.cos(newVertexZ), (float)Math.sin(newVertexZ)};
+            float[] newVertex = new float[]{
+                    (float)i,
+                    2.1f,
+                    shrinkFactor * (float)Math.cos(newVertexZ),
+                    shrinkFactor * (float)Math.sin(newVertexZ)};
             if (i == 0) {
                 newVertex[1] = 0;
                 minV = newVertex;
